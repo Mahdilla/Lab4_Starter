@@ -1,35 +1,32 @@
 /**
- * 
- * @param {*} num1 - First number to add. 
- * @param {*} num2 - Second number to add. 
- * @param {*} add - Boolean value to tell the function what to do. 
- * @returns The sum of the two numbers if add is true, or false otherwise.
+ * Adds two numbers if `add` is true. Returns false otherwise.
+ * @param {*} num1 
+ * @param {*} num2 
+ * @param {*} add 
+ * @returns sum or false
  */
 function sumValues(num1, num2, add) {
     if (add) {
-        let result = 0;
-        result = num1 + num2;
-        return result;
+        if (typeof num1 !== 'number' || typeof num2 !== 'number') return false;
+        return num1 + num2;
     } else {
         return false;
     }
 }
 
 /**
- * 
- * @param {*} prices - An array of the original prices.
- * @param {*} discount - A number between 0 and 1 to represent the discount. 
- * @returns An array of each price’s new price after the discount is applied, or false if the prices array is empty.
+ * Applies a discount to an array of prices.
+ * @param {*} prices 
+ * @param {*} discount 
+ * @returns array of discounted prices or false if invalid input
  */
 function discountPrices(prices, discount) {
+    if (!Array.isArray(prices) || typeof discount !== 'number') return false;
     if (prices.length === 0) return false;
 
     const discounted = [];
-    const length = prices.length;
-
-    for (let i = 0; i < length; i++) {
-        const discountedPrice = prices[i] * (1 - discount);
-        discounted.push(discountedPrice);
+    for (let i = 0; i < prices.length; i++) {
+        discounted.push(prices[i] * (1 - discount));
     }
 
     return discounted;
